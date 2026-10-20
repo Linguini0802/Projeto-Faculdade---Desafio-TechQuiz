@@ -1,0 +1,41 @@
+[
+  {
+    "id": 1,
+    "pergunta": "Qual comando do Git é utilizado para inicializar um novo repositório local?",
+    "alternativas": [
+      "git clone",
+      "git init",
+      "git commit",
+      "git push"
+    ],
+    "resposta": 1,
+    "explicação": "O comando 'git init' cria um novo repositório Git vazio ou reinicializa um já existente no diretório atual.",
+    "fonte": "Documentação Oficial do Git"
+  },
+  {
+    "id": 2,
+    "pergunta": "Qual tag HTML5 é semanticamente recomendada para o rodapé de uma página ou seção?",
+    "alternativas": [
+      "<bottom>",
+      "<footer>",
+      "<section>",
+      "<div class='footer'>"
+    ],
+    "resposta": 1,
+    "explicação": "A tag <footer> representa um rodapé para o seu conteúdo mais próximo ou para o elemento raiz de seção.",
+    "fonte": "MDN Web Docs"
+  },
+  {
+    "id": 3,
+    "pergunta": "Qual propriedade do CSS Flexbox define o alinhamento dos itens ao longo do eixo principal?",
+    "alternativas": [
+      "align-items",
+      "justify-content",
+      "flex-direction",
+      "row-gap"
+    ],
+    "resposta": 1,
+    "explicação": "A propriedade 'justify-content' define como o navegador distribui o espaço entre e ao redor dos itens flex ao longo do eixo principal.",
+    "fonte": "MDN Web Docs - CSS Flexible Box Layout"
+  }
+]

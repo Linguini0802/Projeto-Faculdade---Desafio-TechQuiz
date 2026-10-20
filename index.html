@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechQuiz - Fundamentos Web</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="container">
+        <!-- Página Inicial (Com a classe 'ativa' para aparecer primeiro) -->
+        <section class="tela ativa">
+            <header class="cabecalho-quiz">
+                <h1>TechQuiz</h1>
+                <span class="etiqueta">Desenvolvimento Web & Git</span>
+            </header>
+            <div class="descricao-quiz">
+                <p>Bem-vindo ao <strong>TechQuiz</strong>! Teste seus conhecimentos sobre desenvolvimento front-end, HTML, CSS e comandos essenciais do Git.</p>
+            </div>
+            <button class="botao-primario">Jogar Agora</button>
+        </section>
+
+        <!-- Tela de Jogo (Sem a classe 'ativa' por enquanto) -->
+        <section class="tela">
+            <div class="informacoes-topo-jogo">
+                <span>Pergunta 3 de 10</span>
+            </div>
+
+            <div class="container-pergunta">
+                <p>Qual propriedade do CSS Flexbox define o alinhamento dos itens ao longo do eixo principal?</p>
+            </div>
+
+            <div class="container-alternativas">
+                <button class="botao-alternativa botao-correto">align-items</button>
+                <button class="botao-alternativa">justify-content</button>
+                <button class="botao-alternativa">flex-direction</button>
+                <button class="botao-alternativa">row-gap</button>
+            </div>
+
+            <div class="container-retorno">
+                <p class="texto-retorno">Resposta correta — veja a explicação</p>
+            </div>
+
+            <button class="botao-primario">Próxima</button>
+        </section>
+    </main>
+</body>
+</html>
