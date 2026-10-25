@@ -1,0 +1,132 @@
+[
+  {
+    "id": 1,
+    "pergunta": "Qual função do Python é utilizada para exibir informações na tela?",
+    "alternativas": [
+      "input()",
+      "len()",
+      "print()",
+      "type()"
+    ],
+    "resposta": 2,
+    "explicação": "A função 'print()' envia o conteúdo informado para a saída padrão, que normalmente é o terminal.",
+    "fonte": "Documentação Oficial do Python - Built-in Functions"
+  },
+  {
+    "id": 2,
+    "pergunta": "Qual símbolo é utilizado para criar um comentário de uma linha em Python?",
+    "alternativas": [
+      "//",
+      "#",
+      "/* */",
+      "<!-- -->"
+    ],
+    "resposta": 1,
+    "explicação": "Em Python, tudo o que vem depois do símbolo '#' na mesma linha é ignorado pelo interpretador, sendo tratado como comentário.",
+    "fonte": "Documentação Oficial do Python - Lexical Analysis"
+  },
+  {
+    "id": 3,
+    "pergunta": "Qual estrutura de dados do Python é ordenada, mutável e definida com colchetes []?",
+    "alternativas": [
+      "tuple",
+      "set",
+      "dict",
+      "list"
+    ],
+    "resposta": 3,
+    "explicação": "A 'list' (lista) mantém a ordem dos elementos, permite alterá-los após a criação e é definida com colchetes, como em [1, 2, 3].",
+    "fonte": "Documentação Oficial do Python - Data Structures"
+  },
+  {
+    "id": 4,
+    "pergunta": "Qual é o resultado da expressão len('Python')?",
+    "alternativas": [
+      "6",
+      "5",
+      "7",
+      "Erro de sintaxe"
+    ],
+    "resposta": 0,
+    "explicação": "A função 'len()' retorna a quantidade de elementos de uma sequência. A palavra 'Python' possui 6 caracteres.",
+    "fonte": "Documentação Oficial do Python - Built-in Functions"
+  },
+  {
+    "id": 5,
+    "pergunta": "Qual é o resultado da operação 7 // 2 em Python?",
+    "alternativas": [
+      "4",
+      "3.5",
+      "1",
+      "3"
+    ],
+    "resposta": 3,
+    "explicação": "O operador '//' realiza a divisão inteira, descartando a parte decimal do resultado. Assim, 7 // 2 resulta em 3.",
+    "fonte": "Documentação Oficial do Python - The Python Tutorial (Numbers)"
+  },
+  {
+    "id": 6,
+    "pergunta": "Qual palavra reservada é utilizada para definir uma função em Python?",
+    "alternativas": [
+      "func",
+      "function",
+      "def",
+      "define"
+    ],
+    "resposta": 2,
+    "explicação": "A palavra reservada 'def' inicia a definição de uma função, seguida do nome, dos parâmetros entre parênteses e de dois pontos.",
+    "fonte": "Documentação Oficial do Python - Defining Functions"
+  },
+  {
+    "id": 7,
+    "pergunta": "O que será exibido pelo código: for i in range(3): print(i)?",
+    "alternativas": [
+      "1 2 3",
+      "0 1 2",
+      "0 1 2 3",
+      "1 2"
+    ],
+    "resposta": 1,
+    "explicação": "A função 'range(3)' gera os números de 0 até 2 (o valor final não é incluído), portanto o laço imprime 0, 1 e 2.",
+    "fonte": "Documentação Oficial do Python - The Python Tutorial (for Statements)"
+  },
+  {
+    "id": 8,
+    "pergunta": "Qual operador é utilizado para verificar se dois valores são iguais?",
+    "alternativas": [
+      "=",
+      "=>",
+      "==",
+      ":="
+    ],
+    "resposta": 2,
+    "explicação": "O operador '==' compara dois valores e retorna True se forem iguais. Já o '=' é usado apenas para atribuição de valores a variáveis.",
+    "fonte": "Documentação Oficial do Python - Expressions (Comparisons)"
+  },
+  {
+    "id": 9,
+    "pergunta": "Dado o dicionário aluno = {'nome': 'Ana'}, como acessar o valor associado à chave 'nome'?",
+    "alternativas": [
+      "aluno.nome",
+      "aluno('nome')",
+      "aluno->nome",
+      "aluno['nome']"
+    ],
+    "resposta": 3,
+    "explicação": "Em dicionários, o acesso a um valor é feito informando a chave entre colchetes, como em aluno['nome'].",
+    "fonte": "Documentação Oficial do Python - Data Structures (Dictionaries)"
+  },
+  {
+    "id": 10,
+    "pergunta": "Qual é o tipo de dado sempre retornado pela função input(), mesmo que o usuário digite um número?",
+    "alternativas": [
+      "str",
+      "int",
+      "float",
+      "bool"
+    ],
+    "resposta": 0,
+    "explicação": "A função 'input()' sempre retorna uma string (str). Para usar o valor como número, é necessário convertê-lo com int() ou float().",
+    "fonte": "Documentação Oficial do Python - Built-in Functions"
+  }
+]

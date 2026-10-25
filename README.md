@@ -21,4 +21,4 @@ Quiz interativo desenvolvido na matéria de Desenvolvimento Front-end para Web. 
 * HTML5 Semântico
 * CSS3 (Flexbox, variáveis customizadas, acessibilidade e design responsivo)
 * JSON (Estrutura de dados para as questões)
-* Git e GitHub (Controle de versão e hospedagem)
+* Git e GitHub (Controle de versão e hospedagem) 
