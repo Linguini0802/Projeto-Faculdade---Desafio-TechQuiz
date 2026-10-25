@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechQuiz - Fundamentos Web</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="container">
+        <!-- Página Inicial (Com a classe 'ativa' para aparecer primeiro) -->
+        <section class="tela ativa">
+            <header class="cabecalho-quiz">
+                <h1>TechQuiz</h1>
+                <span class="etiqueta">Desenvolvimento Web & Git</span>
+            </header>
+            <div class="descricao-quiz">
+                <p>Bem-vindo ao <strong>TechQuiz</strong>! Teste seus conhecimentos sobre programação em Python</p>
+            </div>
+            <button class="botao-primario">Jogar Agora</button>
+        </section>
+
+        <!-- Tela de Jogo (Sem a classe 'ativa' por enquanto) -->
+        <section class="tela">
+            <div class="informacoes-topo-jogo">
+                <span>Pergunta 3 de 10</span>
+            </div>
+
+            <div class="container-pergunta">
+                <p>Qual estrutura de dados do Python é ordenada, mutável e definida com colchetes []?</p>
+            </div>
+
+            <div class="container-alternativas">
+                <button class="botao-alternativa">tuple</button>
+                <button class="botao-alternativa">set</button>
+                <button class="botao-alternativa">dict</button>
+                <button class="botao-alternativa botao-correto">list</button>
+            </div>
+
+            <div class="container-retorno">
+                <p class="texto-retorno">Resposta correta — veja a explicação</p>
+            </div>
+
+            <button class="botao-primario">Próxima</button>
+        </section>
+    </main>
+</body>
+</html>
