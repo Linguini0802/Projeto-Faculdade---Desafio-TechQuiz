@@ -11,7 +11,7 @@
     --cor-borda: #334155;
 }
 
-/* COnfigurações iniciais básicas */
+/* Configurações iniciais básicas */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -50,7 +50,6 @@ body {
     display: flex;
 }
 
-
 .cabecalho-quiz {
     text-align: center;
 }
@@ -75,7 +74,6 @@ body {
     color: var(--cor-texto-suave);
     line-height: 1.6;
 }
-
 
 .informacoes-topo-jogo {
     text-align: center;
@@ -129,6 +127,18 @@ body {
     font-weight: 600;
 }
 
+.botao-alternativa.botao-incorreto {
+    background-color: rgba(239, 68, 68, 0.15);
+    border-color: #ef4444;
+    color: #ef4444;
+    font-weight: 600;
+}
+
+.botao-alternativa:disabled {
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
 .container-retorno {
     text-align: center;
     padding: 0.5rem;
@@ -155,6 +165,10 @@ body {
 
 .botao-primario:hover {
     background-color: var(--cor-primaria-hover);
+}
+
+.botao-secundario:hover {
+    background-color: #374151 !important;
 }
 
 button:focus-visible, 
