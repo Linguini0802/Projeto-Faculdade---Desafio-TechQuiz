@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <h1>Meu primeiro commit!</h1>
-<p>aprendendo GitHub.</p>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TechQuiz - Fundamentos Web</title>
@@ -10,41 +8,69 @@
 </head>
 <body>
     <main class="container">
-        <!-- Página Inicial (Com a classe 'ativa' para aparecer primeiro) -->
-        <section class="tela ativa">
+
+        <!-- Tela 1: Início -->
+        <section id="tela-inicio" class="tela ativa">
             <header class="cabecalho-quiz">
                 <h1>TechQuiz</h1>
-                <span class="etiqueta">Desenvolvimento Web & Git</span>
+                <span class="etiqueta">Python para Iniciantes</span>
             </header>
             <div class="descricao-quiz">
-                <p>Bem-vindo ao <strong>TechQuiz</strong>! Teste seus conhecimentos sobre programação em Python</p>
+                <p>Bem-vindo ao <strong>TechQuiz</strong>! Teste seus conhecimentos sobre programação em Python.</p>
             </div>
-            <button class="botao-primario">Jogar Agora</button>
+            <button id="btn-iniciar" class="botao-primario">Jogar Agora</button>
         </section>
 
-        <!-- Tela de Jogo (Sem a classe 'ativa' por enquanto) -->
-        <section class="tela">
+        <!-- Tela 2: Nome do jogador -->
+        <section id="tela-nome" class="tela">
+            <header class="cabecalho-quiz">
+                <h1>Quem vai jogar?</h1>
+            </header>
+            <div class="campo">
+                <label for="input-nome">Digite seu nome:</label>
+                <input type="text" id="input-nome" maxlength="30" placeholder="Seu nome">
+            </div>
+            <button id="btn-comecar-jogo" class="botao-primario">Começar</button>
+        </section>
+
+        <!-- Tela 3: Jogo -->
+        <section id="tela-jogo" class="tela">
             <div class="informacoes-topo-jogo">
-                <span>Pergunta 3 de 10</span>
+                <span id="contador-pergunta"></span>
             </div>
 
             <div class="container-pergunta">
-                <p>Qual estrutura de dados do Python é ordenada, mutável e definida com colchetes []?</p>
+                <p id="texto-pergunta"></p>
             </div>
 
-            <div class="container-alternativas">
-                <button class="botao-alternativa">tuple</button>
-                <button class="botao-alternativa">set</button>
-                <button class="botao-alternativa">dict</button>
-                <button class="botao-alternativa botao-correto">list</button>
+            <div id="container-alternativas" class="container-alternativas"></div>
+
+            <div id="container-retorno" class="container-retorno" aria-live="polite">
+                <p id="texto-retorno" class="texto-retorno"></p>
+                <p id="texto-fonte" class="texto-fonte"></p>
             </div>
 
-            <div class="container-retorno">
-                <p class="texto-retorno">Resposta correta — veja a explicação</p>
-            </div>
-
-            <button class="botao-primario">Próxima</button>
+            <button id="btn-proxima" class="botao-primario">Próxima</button>
         </section>
+
+        <!-- Tela 4: Resultado -->
+        <section id="tela-resultado" class="tela">
+            <header class="cabecalho-quiz">
+                <h1 id="mensagem-resultado"></h1>
+                <p id="pontuacao-final"></p>
+            </header>
+
+            <div class="ranking">
+                <h2>Ranking da sessão</h2>
+                <ol id="lista-ranking"></ol>
+            </div>
+
+            <button id="btn-reiniciar" class="botao-primario">Jogar Novamente</button>
+            <button id="btn-limpar-ranking" class="botao-primario botao-secundario">Limpar Ranking</button>
+        </section>
+
     </main>
+
+    <script src="script.js"></script>
 </body>
-</html> 
+</html>

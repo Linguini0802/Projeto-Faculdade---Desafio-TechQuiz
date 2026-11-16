@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Elementos das Telas
+    // Telas
     const telaInicio = document.getElementById("tela-inicio");
     const telaNome = document.getElementById("tela-nome");
     const telaJogo = document.getElementById("tela-jogo");
     const telaResultado = document.getElementById("tela-resultado");
 
-    // Botões e Inputs
+    // Botões e campos
     const btnIniciar = document.getElementById("btn-iniciar");
     const btnComecarJogo = document.getElementById("btn-comecar-jogo");
     const inputNome = document.getElementById("input-nome");
@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnReiniciar = document.getElementById("btn-reiniciar");
     const btnLimparRanking = document.getElementById("btn-limpar-ranking");
 
-    // Elementos do Jogo
+    // Elementos do jogo
     const contadorPergunta = document.getElementById("contador-pergunta");
     const textoPergunta = document.getElementById("texto-pergunta");
     const containerAlternativas = document.getElementById("container-alternativas");
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const textoRetorno = document.getElementById("texto-retorno");
     const textoFonte = document.getElementById("texto-fonte");
 
-    // Elementos de Resultado
+    // Elementos do resultado
     const mensagemResultado = document.getElementById("mensagem-resultado");
     const pontuacaoFinal = document.getElementById("pontuacao-final");
     const listaRanking = document.getElementById("lista-ranking");
@@ -31,20 +31,25 @@ document.addEventListener("DOMContentLoaded", () => {
     let pontuacao = 0;
     let nomeJogador = "";
 
-    // 1. Carregar perguntas do JSON via Fetch
+    // 1. Carregar perguntas do JSON
     async function carregarPerguntas() {
         try {
             const resposta = await fetch("perguntas.json");
             perguntas = await resposta.json();
         } catch (erro) {
-            console.error("Erro ao carregar o arquivo perguntas.json:", erro);
-            alert("Não foi possível carregar as perguntas do quiz.");
+            console.error("Erro ao carregar perguntas.json:", erro);
+            alert("Não foi possível carregar as perguntas. Abra o projeto com o Live Server.");
         }
     }
 
     carregarPerguntas();
 
-    // Navegação entre telas
+    function mudarTela(telaAtual, proximaTela) {
+        telaAtual.classList.remove("ativa");
+        proximaTela.classList.add("ativa");
+    }
+
+    // Navegação
     btnIniciar.addEventListener("click", () => {
         mudarTela(telaInicio, telaNome);
         inputNome.focus();
@@ -57,18 +62,17 @@ document.addEventListener("DOMContentLoaded", () => {
             inputNome.focus();
             return;
         }
+        if (perguntas.length === 0) {
+            alert("As perguntas ainda não foram carregadas.");
+            return;
+        }
         indicePerguntaAtual = 0;
         pontuacao = 0;
         mudarTela(telaNome, telaJogo);
         carregarPerguntaAtual();
     });
 
-    function mudarTela(telaAtual, proximaTela) {
-        telaAtual.classList.remove("ativa");
-        proximaTela.classList.add("ativa");
-    }
-
-    // 2. Carregar e exibir pergunta atual
+    // 2. Mostrar a pergunta atual
     function carregarPerguntaAtual() {
         containerRetorno.style.display = "none";
         btnProxima.style.display = "none";
@@ -82,19 +86,18 @@ document.addEventListener("DOMContentLoaded", () => {
             const botao = document.createElement("button");
             botao.classList.add("botao-alternativa");
             botao.textContent = alternativa;
-            botao.setAttribute("aria-label", `Alternativa: ${alternativa}`);
-            
-            botao.addEventListener("click", () => selecionarResposta(index, pAtual.resposta, pAtual));
+            botao.addEventListener("click", () => selecionarResposta(index, pAtual));
             containerAlternativas.appendChild(botao);
         });
     }
 
-    // 3. Validação da resposta e feedback acessível
-    function selecionarResposta(indiceEscolhido, indiceCorreto, dadosPergunta) {
+    // 3. Conferir a resposta
+    function selecionarResposta(indiceEscolhido, dadosPergunta) {
+        const indiceCorreto = dadosPergunta.resposta;
         const botoes = containerAlternativas.querySelectorAll(".botao-alternativa");
-        
+
         botoes.forEach((botao, index) => {
-            botao.disabled = true; // Desativa cliques extras
+            botao.disabled = true;
             if (index === indiceCorreto) {
                 botao.classList.add("botao-correto");
                 botao.textContent += " ✔ (Correto)";
@@ -113,14 +116,13 @@ document.addEventListener("DOMContentLoaded", () => {
             textoRetorno.style.color = "#ef4444";
         }
 
-        // Exibir explicação e fonte
-        textoFonte.innerHTML = `${dadosPergunta.explicação} <br><strong>Fonte:</strong> <a href="${dadosPergunta.fonte}" target="_blank" style="color: var(--cor-primaria);">${dadosPergunta.fonte}</a>`;
+        textoFonte.textContent = `${dadosPergunta.explicacao} Fonte: ${dadosPergunta.fonte}`;
         containerRetorno.style.display = "block";
         btnProxima.style.display = "block";
         btnProxima.focus();
     }
 
-    // 4. Controle de fluxo para próxima pergunta ou fim
+    // 4. Próxima pergunta ou fim
     btnProxima.addEventListener("click", () => {
         indicePerguntaAtual++;
         if (indicePerguntaAtual < perguntas.length) {
@@ -130,12 +132,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // 5. Finalizar jogo, pontuação e salvar no sessionStorage
+    // 5. Fim do quiz e ranking
     function finalizarQuiz() {
         mudarTela(telaJogo, telaResultado);
         mensagemResultado.textContent = `Parabéns, ${nomeJogador}!`;
         pontuacaoFinal.textContent = `Você acertou ${pontuacao} de ${perguntas.length} perguntas.`;
-
         salvarNoSessionStorage(nomeJogador, pontuacao);
         exibirRanking();
     }
@@ -143,7 +144,6 @@ document.addEventListener("DOMContentLoaded", () => {
     function salvarNoSessionStorage(nome, pontos) {
         let ranking = JSON.parse(sessionStorage.getItem("techquiz_ranking")) || [];
         ranking.push({ nome, pontos, data: new Date().toLocaleTimeString() });
-        // Ordena por maior pontuação (decrescente)
         ranking.sort((a, b) => b.pontos - a.pontos);
         sessionStorage.setItem("techquiz_ranking", JSON.stringify(ranking));
     }
@@ -153,27 +153,24 @@ document.addEventListener("DOMContentLoaded", () => {
         listaRanking.innerHTML = "";
 
         if (ranking.length === 0) {
-            listaRanking.innerHTML = "<li style='padding: 0.25rem 0; text-align: center;'>Nenhum registro na sessão.</li>";
+            listaRanking.innerHTML = "<li class='sem-registro'>Nenhum registro na sessão.</li>";
             return;
         }
 
-        // Lista todas as tentativas salvas
-        ranking.forEach((item, index) => {
+        ranking.forEach((item) => {
             const li = document.createElement("li");
-            li.style.padding = "0.35rem 0";
-            li.style.borderBottom = "1px solid var(--cor-borda)";
-            li.textContent = `${index + 1}º - ${item.nome}: ${item.pontos} ponto(s) (${item.data})`;
+            li.textContent = `${item.nome}: ${item.pontos} ponto(s) (${item.data})`;
             listaRanking.appendChild(li);
         });
     }
 
-    // 6. Funcionalidade de Limpar o Ranking
+    // 6. Limpar ranking
     btnLimparRanking.addEventListener("click", () => {
         sessionStorage.removeItem("techquiz_ranking");
         exibirRanking();
     });
 
-    // 7. Opção de Jogar Novamente
+    // 7. Jogar novamente
     btnReiniciar.addEventListener("click", () => {
         inputNome.value = "";
         mudarTela(telaResultado, telaInicio);

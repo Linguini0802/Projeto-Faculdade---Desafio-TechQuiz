@@ -60,6 +60,10 @@ body {
     color: var(--cor-texto);
 }
 
+.cabecalho-quiz p {
+    color: var(--cor-texto-suave);
+}
+
 .etiqueta {
     background-color: rgba(59, 130, 246, 0.15);
     color: var(--cor-primaria);
@@ -75,6 +79,33 @@ body {
     line-height: 1.6;
 }
 
+/* Campo de nome */
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.campo label {
+    color: var(--cor-texto-suave);
+    font-weight: 600;
+}
+
+.campo input {
+    background-color: #262c38;
+    color: var(--cor-texto);
+    border: 1px solid var(--cor-borda);
+    border-radius: 6px;
+    padding: 0.85rem 1rem;
+    font-size: 1rem;
+}
+
+.campo input:focus {
+    outline: 3px solid var(--cor-primaria);
+    outline-offset: 2px;
+}
+
+/* Jogo */
 .informacoes-topo-jogo {
     text-align: center;
     font-weight: 600;
@@ -98,7 +129,7 @@ body {
     gap: 0.75rem;
 }
 
-@media(min-width: 480px) {
+@media (min-width: 480px) {
     .container-alternativas {
         grid-template-columns: 1fr 1fr;
     }
@@ -116,7 +147,7 @@ body {
     text-align: center;
 }
 
-.botao-alternativa:hover {
+.botao-alternativa:hover:not(:disabled) {
     background-color: #374151;
 }
 
@@ -139,17 +170,26 @@ body {
     opacity: 0.8;
 }
 
+/* Feedback (escondido até responder) */
 .container-retorno {
+    display: none;
     text-align: center;
     padding: 0.5rem;
 }
 
 .texto-retorno {
-    color: var(--cor-sucesso);
-    font-size: 0.95rem;
+    font-size: 1rem;
     font-weight: 600;
+    margin-bottom: 0.5rem;
 }
 
+.texto-fonte {
+    color: var(--cor-texto-suave);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Botões principais */
 .botao-primario {
     border: none;
     border-radius: 6px;
@@ -167,11 +207,45 @@ body {
     background-color: var(--cor-primaria-hover);
 }
 
-.botao-secundario:hover {
-    background-color: #374151 !important;
+.botao-secundario {
+    background-color: #2b3446;
+    border: 1px solid var(--cor-borda);
 }
 
-button:focus-visible, 
+.botao-secundario:hover {
+    background-color: #374151;
+}
+
+/* Ranking */
+.ranking {
+    background-color: #262c38;
+    border: 1px solid var(--cor-borda);
+    border-radius: 8px;
+    padding: 1.25rem;
+}
+
+.ranking h2 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    text-align: center;
+}
+
+.ranking ol {
+    padding-left: 1.5rem;
+}
+
+.ranking li {
+    padding: 0.35rem 0;
+    border-bottom: 1px solid var(--cor-borda);
+    color: var(--cor-texto-suave);
+}
+
+.ranking li.sem-registro {
+    list-style: none;
+    text-align: center;
+}
+
+button:focus-visible,
 a:focus-visible {
     outline: 3px solid var(--cor-primaria);
     outline-offset: 2px;
